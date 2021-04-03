@@ -1,10 +1,9 @@
 import React from "react";
 
 import { Button, Container, Grid, Typography } from "@material-ui/core";
-import { sendServerRequest } from "../utils/api";
 
+import jadenAndTheBuns from "../static/Images/IMG_0797.jpg"
 const Layout = () => {
-	let request = { requestType: "postRequest", payload: "Test" };
 
 	return (
 		<Container>
@@ -18,12 +17,11 @@ const Layout = () => {
 				style={{ height: "100vh" }}
 			>
 				<Grid item>
-					<Typography variant={"h2"}>Hello World!</Typography>
+					<Typography variant={"h4"}>Hello World!</Typography>
 				</Grid>
 				<Grid item>
-					<Button color={"primary"} onClick={() => sendServerRequest(request)}>
-						Click Me To Hit API
-					</Button>
+				<img src={jadenAndTheBuns} alt="Jaden And The Buns" style={{width:500, height:"auto"}}>
+					</img>
 				</Grid>
 			</Grid>
 		</Container>
