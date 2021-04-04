@@ -17,7 +17,7 @@ const Layout = () => {
 				style={{ height: "100vh" }}
 			>
 				<Grid item>
-					<Typography variant={"h4"}>Hello World!</Typography>
+					<Typography variant={"h4"}>It's Jaden Rosoff's Website!</Typography>
 				</Grid>
 				<Grid item>
 				<img src={jadenAndTheBuns} alt="Jaden And The Buns" style={{width:500, height:"auto"}}>
