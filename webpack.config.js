@@ -49,7 +49,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: "./client/static/template/index.html",
 			favicon: "./client/static/template/favicon.ico",
-			title: "React-Express-Template"
+			title: "Jaden Rosoff's Website"
 		}),
 		new webpack.HotModuleReplacementPlugin()
 	]
