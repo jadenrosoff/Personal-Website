@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Jaden's Website!",
   "scripts": {
-      "start": "webpack serve --mode development",
-      "build": "webpack --mode production"
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production"
   },
   "author": "Jaden Rosoff",
   "license": "MIT",
@@ -30,10 +30,10 @@
     "css-loader": "^5.2.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
-    "node-sass": "^5.0.0",
     "postcss-loader": "^5.2.0",
     "precss": "^4.0.0",
     "react-router-dom": "^5.2.0",
+    "sass": "^1.93.2",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
