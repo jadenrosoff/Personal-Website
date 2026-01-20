@@ -1,14 +1,11 @@
 import React from "react";
 import { Button, Container, Grid, Typography, Box } from "@material-ui/core";
-// Assuming you still want this image, though you might change it later
-import jadenAndTheBuns from "../static/Images/IMG_0797.jpg"
 import JadenGrad from "../static/Images/JadenGrad.jpg"
 
 // Define your profile links and theme colors
 const GITHUB_URL = "http://github.com/jadenrosoff";
 const LINKEDIN_URL = "https://www.linkedin.com/in/jaden-rosoff/";
-const RESUME_FILE_PATH = "/static/Your_Resume.pdf"; // IMPORTANT: Replace with your actual resume path
-
+const RESUME_FILE_PATH = "/client/static/template/currentjadenrosoffresume.pdf"
 const PRIMARY_COLOR = "#9f7ae0"; // Deep Purple
 const TEXT_COLOR = "#FFFFFF"; // White
 

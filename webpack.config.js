@@ -54,7 +54,6 @@ module.exports = {
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			template: "./client/static/template/index.html",
-			favicon: "./client/static/template/favicon.ico",
 			title: "Jaden Rosoff's Website"
 		}),
 		new webpack.HotModuleReplacementPlugin()
