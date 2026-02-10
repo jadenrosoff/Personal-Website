@@ -23,6 +23,35 @@ const TEXT_COLOR = "#FFFFFF";
 const Layout = () => {
 	const images = [JadenGrad, Boat, Dawg, Gradeng, Gradsmile, Skilift, Trivialgroup];
 	const [currentIndex, setCurrentIndex] = useState(0);
+	const [sparkles, setSparkles] = useState([]);
+
+	useEffect(() => {
+		const handleMouseMove = (e) => {
+			const RADIUS = 20;
+			const id = Math.random().toString(36).substr(2, 9);
+
+			const offsetX = (Math.random() - 0.5) * RADIUS * 2;
+			const offsetY = (Math.random() - 0.5) * RADIUS * 2;
+
+			const newSparkle = {
+				id,
+				x: e.clientX + offsetX,
+				y: e.clientY + offsetY,
+				size: Math.random() * 5 + 1,
+				driftX: (Math.random() - 0.5) * 40,
+				driftY: (Math.random() - 0.5) * 40,
+			};
+
+			setSparkles((prev) => [...prev.slice(-40), newSparkle]);
+
+			setTimeout(() => {
+				setSparkles((prev) => prev.filter((s) => s.id !== id));
+			}, 600);
+		};
+
+		window.addEventListener("mousemove", handleMouseMove);
+		return () => window.removeEventListener("mousemove", handleMouseMove);
+	}, []);
 
 	const nextSlide = () => {
 		setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
@@ -49,11 +78,39 @@ const Layout = () => {
 			m: 0, p: 0,
 			display: 'flex',
 			flexDirection: 'column',
-			overflow: 'hidden'
+			overflow: 'hidden',
+			position: 'relative'
 		}}>
 			<CssBaseline />
 
-			<Box sx={{ pt: { xs: 4, md: 6 }, px: 4, flex: '0 0 auto', width: '100%', textAlign: 'center' }}>
+			{sparkles.map((sparkle) => (
+				<Box
+					key={sparkle.id}
+					sx={{
+						position: 'fixed',
+						left: sparkle.x,
+						top: sparkle.y,
+						width: sparkle.size,
+						height: sparkle.size,
+						bgcolor: '#FFF',
+						borderRadius: '50%',
+						pointerEvents: 'none',
+						zIndex: 9999,
+						boxShadow: '0 0 8px #FFF, 0 0 12px rgba(255,255,255,0.8)',
+						animation: 'sparkleMove 0.6s ease-out forwards',
+						'@keyframes sparkleMove': {
+							'0%': { transform: 'scale(0)', opacity: 0 },
+							'20%': { transform: 'scale(1.2)', opacity: 1 },
+							'100%': {
+								transform: `translate(${sparkle.driftX}px, ${sparkle.driftY}px) scale(0)`,
+								opacity: 0
+							}
+						}
+					}}
+				/>
+			))}
+
+			<Box sx={{ pt: { xs: 4, md: 6 }, px: 4, flex: '0 0 auto', width: '100%', textAlign: 'center', zIndex: 2 }}>
 				<Typography
 					variant="h1"
 					sx={{
@@ -78,9 +135,9 @@ const Layout = () => {
 				flexDirection: { xs: 'column', md: 'row' },
 				p: { xs: 2, md: 6 },
 				gap: 4,
-				minHeight: 0
+				minHeight: 0,
+				zIndex: 2
 			}}>
-
 				<Box sx={{
 					flex: 1.2,
 					borderRadius: '30px',
