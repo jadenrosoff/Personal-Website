@@ -1,76 +1,86 @@
 import React from "react";
-import { Button, Container, Grid, Typography, Box } from "@material-ui/core";
-import JadenGrad from "../static/Images/JadenGrad.jpg"
+import { Button, Container, Grid, Typography, Box, Stack } from "@mui/material";
+import ResumePDF from "../static/template/JadenRosoff.pdf";
+import JadenGrad from "../static/Images/JadenGrad.jpg";
 
-// Define your profile links and theme colors
 const GITHUB_URL = "http://github.com/jadenrosoff";
 const LINKEDIN_URL = "https://www.linkedin.com/in/jaden-rosoff/";
-const RESUME_FILE_PATH = "/client/static/template/JadenRosoff.pdf"
-const PRIMARY_COLOR = "#9f7ae0"; // Deep Purple
-const TEXT_COLOR = "#FFFFFF"; // White
+const PRIMARY_COLOR = "#9f7ae0";
+const TEXT_COLOR = "#FFFFFF";
 
 const Layout = () => {
-
-	// Helper function to handle external links
 	const handleLinkClick = (url) => {
 		window.open(url, '_blank');
 	};
 
 	return (
-		// Apply purple background to the whole viewport
 		<Container
-			maxWidth={false} // Allows the container to span the full width
-			style={{
+			maxWidth={false}
+			disableGutters
+			sx={{
 				backgroundColor: PRIMARY_COLOR,
 				minHeight: "100vh",
-				padding: 0
+				m: 0,
+				p: 0
 			}}
 		>
-			{/* --- Navigation Menu --- */}
-			<Box style={{ padding: '20px', textAlign: 'center' }}>
-				<Button
-					onClick={() => handleLinkClick(RESUME_FILE_PATH)}
-					style={{ color: TEXT_COLOR, marginRight: '10px', borderColor: TEXT_COLOR }}
-					variant="outlined"
+
+			<Box sx={{ padding: '20px', textAlign: 'center' }}>
+				<Stack
+					direction="row"
+					spacing={2}
+					justifyContent="center"
 				>
-					Resume
-				</Button>
-				<Button
-					onClick={() => handleLinkClick(GITHUB_URL)}
-					style={{ color: TEXT_COLOR, marginRight: '10px', borderColor: TEXT_COLOR }}
-					variant="outlined"
-				>
-					GitHub
-				</Button>
-				<Button
-					onClick={() => handleLinkClick(LINKEDIN_URL)}
-					style={{ color: TEXT_COLOR, borderColor: TEXT_COLOR }}
-					variant="outlined"
-				>
-					LinkedIn
-				</Button>
+					<Button
+						onClick={() => window.open(ResumePDF, '_blank')}
+						variant="outlined"
+						sx={{ color: TEXT_COLOR, borderColor: TEXT_COLOR }}
+					>
+						Resume
+					</Button>
+
+					<Button
+						onClick={() => handleLinkClick(GITHUB_URL)}
+						variant="outlined"
+						sx={{ color: TEXT_COLOR, borderColor: TEXT_COLOR }}
+					>
+						GitHub
+					</Button>
+
+					<Button
+						onClick={() => handleLinkClick(LINKEDIN_URL)}
+						variant="outlined"
+						sx={{ color: TEXT_COLOR, borderColor: TEXT_COLOR }}
+					>
+						LinkedIn
+					</Button>
+				</Stack>
 			</Box>
 
-			{/* --- Main Content --- */}
 			<Grid
 				container
-				direction={"column"}
-				justify={"center"}
-				alignContent={"center"}
-				alignItems={"center"}
-				spacing={4} // Increased spacing for better look
-				style={{ minHeight: "calc(100vh - 80px)" }} // Adjusted height to account for menu
+				direction="column"
+				justifyContent="center"
+				alignItems="center"
+				spacing={4}
+				sx={{ minHeight: "calc(100vh - 100px)" }}
 			>
 				<Grid item>
-					<Typography variant={"h4"} style={{ color: TEXT_COLOR }}>
+					<Typography variant="h4" sx={{ color: TEXT_COLOR, fontWeight: 'bold' }}>
 						It's Jaden Rosoff's Website!
 					</Typography>
 				</Grid>
 				<Grid item>
-					<img
+					<Box
+						component="img"
 						src={JadenGrad}
-						alt="A picture of jaden rosoff on a statue stand"
-						style={{ width: 500, height: "auto", borderRadius: '8px', boxShadow: '0 4px 10px rgba(0,0,0,0.5)' }}
+						alt="Jaden Rosoff"
+						sx={{
+							width: { xs: '90%', sm: 500 },
+							height: "auto",
+							borderRadius: '12px',
+							boxShadow: '0 8px 30px rgba(0,0,0,0.3)'
+						}}
 					/>
 				</Grid>
 			</Grid>
