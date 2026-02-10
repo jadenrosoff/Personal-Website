@@ -62,7 +62,7 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.(woff|woff2|eot|ttf|otf|png|svg|jpe?g|gif|mp4|wav|mp3|heic|pdf)$/i,
+				test: /\.(woff|woff2|eot|ttf|otf|png|svg|jpe?g|gif|mp4|wav|mp3|heic|pdf|ico)$/i,
 				type: 'asset/resource',
 			},
 		]
@@ -70,13 +70,15 @@ module.exports = {
 	output: {
 		filename: "bundle.js",
 		path: path.join(__dirname, outputDirectory),
-		clean: true
+		clean: true,
+		publicPath: '/',
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			template: "./client/static/template/index.html",
-			title: "Jaden Rosoff's Website"
+			title: "Jaden Rosoff's Website",
+			favicon: "./client/static/template/favicon.ico"
 		}),
 		new webpack.HotModuleReplacementPlugin()
 	]
